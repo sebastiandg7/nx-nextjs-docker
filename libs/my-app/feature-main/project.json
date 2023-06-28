@@ -1,0 +1,16 @@
+{
+  "name": "my-app-feature-main",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/my-app/feature-main/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/my-app/feature-main/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { MyAppFeatureMain } from '@myorg/my-app/feature-main';
 import styles from './page.module.css';
 
 export default async function Index() {
@@ -10,6 +11,7 @@ export default async function Index() {
     <div className={styles.page}>
       <div className="wrapper">
         <div className="container">
+          <MyAppFeatureMain />
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
