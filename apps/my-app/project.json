@@ -1,0 +1,102 @@
+{
+  "name": "my-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-app",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/my-app"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/my-app"
+        },
+        "production": {}
+      },
+      "dependsOn": ["build-custom-server"]
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-app:build",
+        "dev": true,
+        "customServerTarget": "my-app:serve-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-app:build:development",
+          "dev": true,
+          "customServerTarget": "my-app:serve-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "my-app:build:production",
+          "dev": false,
+          "customServerTarget": "my-app:serve-custom-server:production"
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "my-app:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/my-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "build-custom-server": {
+      "executor": "@nx/js:tsc",
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/my-app",
+        "main": "apps/my-app/server/main.ts",
+        "tsConfig": "apps/my-app/tsconfig.server.json",
+        "clean": false,
+        "assets": []
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve-custom-server": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-app:build-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-app:build-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "my-app:build-custom-server:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
