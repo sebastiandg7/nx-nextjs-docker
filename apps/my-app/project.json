@@ -68,19 +68,35 @@
       }
     },
     "build-custom-server": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/esbuild:esbuild",
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/my-app",
         "main": "apps/my-app/server/main.ts",
         "tsConfig": "apps/my-app/tsconfig.server.json",
         "clean": false,
-        "assets": []
-      },
-      "configurations": {
-        "development": {},
-        "production": {}
-      }
+        "assets": [],
+        "platform": "node",
+        "outputFileName": "server/main.js",
+        "format": ["cjs"],
+        "bundle": true,
+        "thirdParty": false,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+     },
+     "configurations": {
+        "development": {
+          "sourcemap": true
+        },
+        "production": {
+          "sourcemap": false,
+          "assets": [".npmrc"]
+        }
+     }
     },
     "serve-custom-server": {
       "executor": "@nx/js:node",

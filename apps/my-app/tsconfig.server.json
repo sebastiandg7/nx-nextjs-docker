@@ -4,7 +4,6 @@
     "module": "commonjs",
     "noEmit": false,
     "incremental": true,
-    "tsBuildInfoFile": "../../tmp/buildcache/apps/my-app/server",
     "types": ["node"]
   },
   "include": ["server/**/*.ts"]
