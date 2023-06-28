@@ -12,7 +12,7 @@ The repository contains all the necessary code and configuration files to follow
 
 To successfully run the Next.js application and Dockerize it, ensure that you have the following dependencies installed on your system:
 
-- Docker (version X.X.X)
+- Docker (version 23)
 - Node.js (version 18)
 - pnpm (version 8)
 
