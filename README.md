@@ -1,4 +1,4 @@
-# Nx + Next.js + Docker Repository
+# Nx + Next.js + Docker
 
 This repository contains the code implementation of the steps described in the blog posts titled:
 
