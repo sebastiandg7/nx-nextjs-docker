@@ -77,7 +77,16 @@ Once the container image is built, you can start the container by running:
 docker run -p 3000:3000 -t my-app:latest
 ```
 
-Visit 
+Visit http://localhost:3000 to see the application running
+
+![Nx + NextJs application running from a container](https://github.com/sebastiandg7/nx-nextjs-docker/assets/13395979/7c2ef304-5168-4058-a950-4664f81fc05a)
+
+Or call the API endpoint:
+
+```bash
+➜ curl http://localhost:3000/api/hello
+Hello, from API!
+```
 
 ## Additional Information
 
