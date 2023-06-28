@@ -1,0 +1,13 @@
+{
+  "name": "@myorg/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/workspace": "16.4.0",
+    "nx": "16.4.0",
+    "nx-cloud": "latest"
+  }
+}
