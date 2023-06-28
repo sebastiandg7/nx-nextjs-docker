@@ -1,6 +1,9 @@
 # Nx + Next.js + Docker Repository
 
-This repository contains the code implementation of the steps described in the blog post titled "[Nx + Next.js + Docker: The Nx Way - Creating the Next.js Application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-creating-the-nextjs-application-1efl)".
+This repository contains the code implementation of the steps described in the blog posts titled:
+
+- [Nx + NextJS + Docker - The Nx way: Creating the NextJS application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-creating-the-nextjs-application-1efl).
+- [Nx + NextJS + Docker - The Nx way: Containerizing our application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-containerizing-our-application-1mi7)
 
 ## Overview
 
@@ -56,9 +59,32 @@ node server/main.js # Using the custom server
 npm start # Using the NextJS built-in server
 ```
 
+## Containerizing the application
+
+To build the NexJS application container, run:
+
+```bash
+pnpm exec nx container my-app
+```
+
+This will create a local image tagged as `my-app:latest`.
+
+## Running the application contianer
+
+Once the container image is built, you can start the container by running:
+
+```bash
+docker run -p 3000:3000 -t my-app:latest
+```
+
+Visit 
+
 ## Additional Information
 
-For additional information and in-depth explanations of the steps involved, please refer to the blog post: "[Nx + Next.js + Docker: The Nx Way - Creating the Next.js Application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-creating-the-nextjs-application-1efl)".
+For additional information and in-depth explanations of the steps involved, please refer to the blog posst:
+
+- [Nx + NextJS + Docker - The Nx way: Creating the NextJS application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-creating-the-nextjs-application-1efl).
+- [Nx + NextJS + Docker - The Nx way: Containerizing our application](https://dev.to/sebastiandg7/nx-nextjs-docker-the-nx-way-containerizing-our-application-1mi7)
 
 ## License
 

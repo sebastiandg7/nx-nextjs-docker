@@ -15,9 +15,11 @@
         "development": {
           "outputPath": "apps/my-app"
         },
-        "production": {}
+        "production": {
+          "generateLockfile": true
+        }
       },
-      "dependsOn": ["build-custom-server"]
+      "dependsOn": ["^build", "build-custom-server"]
     },
     "serve": {
       "executor": "@nx/next:server",
@@ -87,8 +89,8 @@
             ".js": ".js"
           }
         }
-     },
-     "configurations": {
+      },
+      "configurations": {
         "development": {
           "sourcemap": true
         },
@@ -96,7 +98,7 @@
           "sourcemap": false,
           "assets": [".npmrc"]
         }
-     }
+      }
     },
     "serve-custom-server": {
       "executor": "@nx/js:node",
@@ -110,6 +112,26 @@
         },
         "production": {
           "buildTarget": "my-app:build-custom-server:production"
+        }
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "defaultConfiguration": "local",
+      "options": {
+        "engine": "docker",
+        "context": "dist/apps/my-app",
+        "file": "apps/my-app/Dockerfile"
+      },
+      "configurations": {
+        "local": {
+          "tags": ["my-app:latest"],
+          "push": false
+        },
+        "production": {
+          "tags": ["my.image-registry.com/my-app:latest"],
+          "push": true
         }
       }
     }

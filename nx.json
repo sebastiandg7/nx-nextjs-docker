@@ -19,6 +19,9 @@
     "build": {
       "dependsOn": ["^build"]
     },
+    "build-custom-server": {
+      "dependsOn": ["^build"]
+    },
     "test": {
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
     },
