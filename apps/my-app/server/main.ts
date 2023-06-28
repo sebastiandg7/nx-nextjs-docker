@@ -10,6 +10,7 @@ import { createServer } from 'http';
 import { parse } from 'url';
 import * as path from 'path';
 import next from 'next';
+import { sharedUtilNextjsServer } from '@myorg/shared/util-nextjs-server';
 
 // Next.js server options:
 // - The environment variable is set by `@nx/next:server` when running the dev server.
@@ -24,6 +25,7 @@ const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT ? parseInt(process.env.PORT) : 4200;
 
 async function main() {
+  console.log(sharedUtilNextjsServer());
   const nextApp = next({ dev, dir });
   const handle = nextApp.getRequestHandler();
 

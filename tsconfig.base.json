@@ -18,6 +18,9 @@
       "@myorg/my-app/feature-main": ["libs/my-app/feature-main/src/index.ts"],
       "@myorg/my-app/feature-main/server": [
         "libs/my-app/feature-main/src/server.ts"
+      ],
+      "@myorg/shared/util-nextjs-server": [
+        "libs/shared/util-nextjs-server/src/index.ts"
       ]
     }
   },
