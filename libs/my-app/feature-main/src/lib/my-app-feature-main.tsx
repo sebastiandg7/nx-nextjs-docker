@@ -1,3 +1,4 @@
+'use client';
 import styles from './my-app-feature-main.module.css';
 
 /* eslint-disable-next-line */
